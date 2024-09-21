@@ -58,6 +58,7 @@ def benchmark(
     corruptions threat model.
     :param preprocessing: The preprocessing that should be used for ImageNet benchmarking. Should be
     specified if `dataset` is `imageget`.
+    :param version: Choose the version of the attack to be runned on the model.
     :param attacks_to_run: Choose the attack to be runned on the model.
     :param aa_state_path: The path where the AA state will be saved and from where should be
     loaded if it already exists. If `None` no state will be used.
@@ -104,7 +105,6 @@ def benchmark(
         adversary = AutoAttack(model,
                                norm=threat_model_.value,
                                eps=eps,
-                               version='standard',
                                device=device,
                                log_path=log_path,
                                version=version,
