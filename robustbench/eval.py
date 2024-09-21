@@ -32,6 +32,7 @@ def benchmark(
     batch_size: int = 32,
     eps: Optional[float] = None,
     log_path: Optional[str] = None,
+    version: Optional[str] = 'standard',
     attacks_to_run: Optional[str] = None,
     preprocessing: Optional[Union[str,
                                   Callable]] = None,
@@ -106,6 +107,7 @@ def benchmark(
                                version='standard',
                                device=device,
                                log_path=log_path,
+                               version=version,
                                attacks_to_run=attacks_to_run)
         x_adv = adversary.run_standard_evaluation(clean_x_test,
                                                   clean_y_test,
