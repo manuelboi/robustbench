@@ -34,7 +34,8 @@ def benchmark(
     log_path: Optional[str] = None,
     preprocessing: Optional[Union[str,
                                   Callable]] = None,
-    aa_state_path: Optional[Path] = None) -> Tuple[float, float]:
+    aa_state_path: Optional[Path] = None) -> Tuple[float, float],
+    attacks_to_run: Optional[str] = None:
     """Benchmarks the given model(s).
 
     It is possible to benchmark on 3 different threat models, and to save the results on disk. In
@@ -58,6 +59,7 @@ def benchmark(
     specified if `dataset` is `imageget`.
     :param aa_state_path: The path where the AA state will be saved and from where should be
     loaded if it already exists. If `None` no state will be used.
+    :param attacks_to_run: Choose the attack to be runned on the model.
 
     :return: A Tuple with the clean accuracy and the accuracy in the given threat model.
     """
@@ -103,7 +105,8 @@ def benchmark(
                                eps=eps,
                                version='standard',
                                device=device,
-                               log_path=log_path)
+                               log_path=log_path,
+                               attacks_to_run=attacks_to_run)
         x_adv = adversary.run_standard_evaluation(clean_x_test,
                                                   clean_y_test,
                                                   bs=batch_size,
