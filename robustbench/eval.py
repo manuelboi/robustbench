@@ -33,7 +33,7 @@ def benchmark(
     eps: Optional[float] = None,
     log_path: Optional[str] = None,
     version: Optional[str] = 'standard',
-    attacks_to_run: Optional[str] = None,
+    attacks_to_run: Optional[str] = [],
     preprocessing: Optional[Union[str,
                                   Callable]] = None,
     aa_state_path: Optional[Path] = None) -> Tuple[float, float]:
